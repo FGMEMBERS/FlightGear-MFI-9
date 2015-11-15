@@ -1,0 +1,654 @@
+<?xml version="1.0"?>
+<!--
+  MFI-9B aircraft for FlightGear.
+
+  Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>MFI-9B.ac</path>
+ <!-- x/y/z == aft/right/up. -->
+ 
+ <!-- Shader effects -->
+ <!-- effect>
+  <inherits-from>Effects/reflect</inherits-from>
+  <object-name>Fuselage</object-name>
+ </effect-->
+
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Models/Effects/transparent-canopy-outside</inherits-from>
+  <object-name>canopy.glass</object-name>
+  <object-name>rear_canopy.glass</object-name>
+ </effect>
+
+ <!-- Livery selection =====================================================-->
+ <animation>
+  <type>material</type>
+  <object-name>aileron.L</object-name>
+  <object-name>aileron.L_0</object-name>
+  <object-name>aileron.L_1</object-name>
+  <object-name>aileron.R</object-name>
+  <object-name>aileron.R_0</object-name>
+  <object-name>aileron.R_1</object-name>
+  <object-name>cowling</object-name>
+  <object-name>elevator</object-name>
+  <object-name>elevator_0</object-name>
+  <object-name>elevator_1</object-name>
+  <object-name>flap.L</object-name>
+  <object-name>flap.L_0</object-name>
+  <object-name>flap.L_1</object-name>
+  <object-name>flap.R</object-name>
+  <object-name>flap.R_0</object-name>
+  <object-name>flap.R_1</object-name>
+  <object-name>fuselage</object-name>
+  <object-name>hstab.tmp</object-name>
+  <object-name>hstab.tmp_0</object-name>
+  <object-name>hstab.tmp_1</object-name>
+  <object-name>rudder</object-name>
+  <object-name>rudder_0</object-name>
+  <object-name>rudder_1</object-name>
+  <object-name>vstab</object-name>
+  <object-name>vstab_0</object-name>
+  <object-name>vstab_1</object-name>
+  <object-name>wing</object-name>
+  <object-name>wing_0</object-name>
+  <object-name>wing_1</object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>texture</texture-prop>
+  <texture>white.png</texture>
+ </animation>
+
+ <!-- Propeller ============================================================-->
+ <model>
+  <name>Propeller</name>
+  <path>Aircraft/MFI-9/Models/propeller.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <z-m>-0.021</z-m>
+   <pitch-deg>-4.00</pitch-deg>
+  </offsets>
+ </model>
+
+ <!-- Interior =============================================================-->
+ <model>
+  <name>Interior</name>
+  <path>Aircraft/MFI-9/Models/Interior/interior.xml</path>
+ </model>
+
+ <!-- External lights ======================================================-->
+ <model>
+  <name>Left navigation light</name>
+  <path>Aircraft/ZLT-NT/Models/Lights/RedLight.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 1.40</x-m>
+   <y-m>-3.65</y-m>
+   <z-m> 0.50</z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Right navigation light</name>
+  <path>Aircraft/ZLT-NT/Models/Lights/GreenLight.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 1.40</x-m>
+   <y-m> 3.65</y-m>
+   <z-m> 0.50</z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Tail navigation light</name>
+  <path>Aircraft/ZLT-NT/Models/Lights/WhiteLight.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 5.72</x-m>
+   <y-m> 0.00</y-m>
+   <z-m> 0.02</z-m>
+  </offsets>
+ </model>
+
+ <!-- Landing gear / Floats and other variant animations ===================-->
+ <animation>
+  <type>select</type>
+  <object-name>NLG_strut</object-name>
+  <object-name>NLG_damper</object-name>
+  <object-name>NLG_damper_rod</object-name>
+  <object-name>NLG_fork</object-name>
+  <object-name>NLG_hub</object-name>
+  <object-name>tyre</object-name>
+  <object-name>landing_gear.L</object-name>
+  <object-name>MLG_hub.L</object-name>
+  <object-name>tyre.L</object-name>
+  <object-name>landing_gear.R</object-name>
+  <object-name>MLG_hub.R</object-name>
+  <object-name>tyre.R</object-name>
+  <condition>
+   <not>
+    <property>sim/model/floats</property>
+   </not>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>float.L</object-name>
+  <object-name>float.R</object-name>
+  <object-name>float_supports</object-name>
+  <object-name>float_support.1L</object-name>
+  <object-name>float_support.1R</object-name>
+  <object-name>float_support.2L</object-name>
+  <object-name>float_support.2R</object-name>
+  <object-name>float_support.3L</object-name>
+  <object-name>float_support.3R</object-name>
+  <condition>
+   <property>sim/model/floats</property>
+  </condition>
+ </animation>
+
+ <!-- Doors and hatches animations =========================================-->
+
+ <!-- Flight control surface animations ====================================-->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>elevator</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-16.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>9.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>5.60</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.00</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>rudder</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-20.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>20.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m>5.37</x1-m>
+   <y1-m>0.00</y1-m>
+   <z1-m>0.15</z1-m>
+   <x2-m>5.67</x2-m>
+   <y2-m>0.00</y2-m>
+   <z2-m>1.20</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>aileron.L</object-name>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>25.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-12.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> 2.45</x1-m>
+   <y1-m>-2.61</y1-m>
+   <z1-m> 0.50</z1-m>
+   <x2-m> 2.40</x2-m>
+   <y2-m>-3.44</y2-m>
+   <z2-m> 0.52</z2-m>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>aileron.R</object-name>
+  <property>surface-positions/right-aileron-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>25.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-12.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m>2.40</x1-m>
+   <y1-m>3.44</y1-m>
+   <z1-m>0.52</z1-m>
+   <x2-m>2.45</x2-m>
+   <y2-m>2.61</y2-m>
+   <z2-m>0.50</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>flap.L</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>35.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> 2.417</x1-m>
+   <y1-m>-2.611</y1-m>
+   <z1-m> 0.503</z1-m>
+   <x2-m> 2.529</x2-m>
+   <y2-m>-0.464</y2-m>
+   <z2-m> 0.466</z2-m>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>flap.R</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>35.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> 2.529</x1-m>
+   <y1-m> 0.464</y1-m>
+   <z1-m> 0.466</z1-m>
+   <x2-m> 2.417</x2-m>
+   <y2-m> 2.611</y2-m>
+   <z2-m> 0.503</z2-m>
+  </axis>
+ </animation>
+
+ <!-- Landing gear animations ==============================================-->
+
+ <!--
+   Interpolation computed in Octave:
+     % Radius of nose landing gear arm.
+     r = 0.286;
+     % Compression in ft.
+     x = 0:0.25:0.75
+     % Offset
+     a0 = 25 * pi/180;
+     % Rotation in deg.
+     a = (a0 - asin(sin(a0) - 0.3048*x./r)) * 180/pi
+ -->
+ <animation>
+  <type>rotate</type>
+  <object-name>NLG_fork</object-name>
+  <object-name>NLG_hub</object-name>
+  <object-name>tyre</object-name>
+  <property>/gear/gear[0]/compression-ft</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>0.00</dep>
+   </entry>
+   <entry>
+    <ind>0.25</ind>
+    <dep>16.01449</dep>
+   </entry>
+   <entry>
+    <ind>0.50</ind>
+    <dep>31.32966</dep>
+   </entry>
+   <entry>
+    <ind>0.75</ind>
+    <dep>47.12834</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>0.549</x-m>
+   <y-m>0.000</y-m>
+   <z-m>-0.641</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>scale</type>
+  <object-name>NLG_damper_rod</object-name>
+  <property>/gear/gear[0]/compression-ft</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>1.00</dep>
+   </entry>
+   <entry>
+    <ind>0.75</ind>
+    <dep>0.75</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>0.781</x-m>
+   <y-m>0.000</y-m>
+   <z-m>-0.501</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.70711</y>
+   <z>-0.70711</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>NLG_strut</object-name>
+  <object-name>NLG_damper</object-name>
+  <object-name>NLG_damper_rod</object-name>
+  <object-name>NLG_fork</object-name>
+  <object-name>NLG_hub</object-name>
+  <object-name>tyre</object-name>
+  <property>/gear/gear[0]/steering-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-15.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>15.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>0.840</x-m>
+   <y-m>0.000</y-m>
+   <z-m>-0.240</z-m>
+  </center>
+  <axis>
+   <x>-0.22495</x>
+   <y>0.0</y>
+   <z>-0.97437</z>
+  </axis>
+ </animation>
+
+ <!--
+   Interpolation computed in Octave:
+     % Radius of landing gear arm.
+     r = sqrt(0.38^2 + 0.59^2);
+     % Compression in ft.
+     x = 0:0.5:2.0
+     % Offset, the unloaded gear is 0.10 m below the "level" position.
+     a0 = 8.1712;
+     % Rotation in deg. Simplifying assumption: x is the length of a segment.
+     a = 2*asin(0.3048*x./(2*r)) * 180/pi - a0
+ -->
+ <animation>
+  <type>rotate</type>
+  <object-name>landing_gear.L</object-name>
+  <object-name>MLG_hub.L</object-name>
+  <object-name>tyre.L</object-name>
+  <property>/gear/gear[1]/compression-ft</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>-8.1712</dep>
+   </entry>
+   <entry>
+    <ind>0.5</ind>
+    <dep>4.2958</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>16.9135</dep>
+   </entry>
+   <entry>
+    <ind>1.5</ind>
+    <dep>29.8498</dep>
+   </entry>
+   <entry>
+    <ind>2.0</ind>
+    <dep>43.3131</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>2.05</x-m>
+   <y-m>-0.41</y-m>
+   <z-m>-0.38</z-m>
+  </center>
+  <axis>
+   <x>-1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>landing_gear.R</object-name>
+  <object-name>MLG_hub.R</object-name>
+  <object-name>tyre.R</object-name>
+  <property>/gear/gear[2]/compression-ft</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>-8.1712</dep>
+   </entry>
+   <entry>
+    <ind>0.5</ind>
+    <dep>4.2958</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>16.9135</dep>
+   </entry>
+   <entry>
+    <ind>1.5</ind>
+    <dep>29.8498</dep>
+   </entry>
+   <entry>
+    <ind>2.0</ind>
+    <dep>43.3131</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>2.05</x-m>
+   <y-m>0.41</y-m>
+   <z-m>-0.38</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <!-- Wake particle effects ================================================-->
+ <model>
+  <name>Left float 1</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/planing-drag-lbs[0]</property>
+       <value>1.0</value>
+      </greater-than>
+     </and>
+    </condition>
+    <shooter>
+     <phi-min-deg>90.0</phi-min-deg>
+     <phi-max-deg>90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/MFI-9B/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  1.60 </x-m>
+   <y-m> -0.95 </y-m>
+   <z-m> -1.50 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Left float 2</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/planing-drag-lbs[0]</property>
+       <value>1.0</value>
+      </greater-than>
+     </and>
+    </condition>
+    <shooter>
+     <phi-min-deg>-90.0</phi-min-deg>
+     <phi-max-deg>-90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/MFI-9B/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  1.60 </x-m>
+   <y-m> -0.95 </y-m>
+   <z-m> -1.50 </z-m>
+  </offsets>
+ </model>
+  <model>
+  <name>Right float 1</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/planing-drag-lbs[1]</property>
+       <value>1.0</value>
+      </greater-than>
+     </and>
+    </condition>
+    <shooter>
+     <phi-min-deg>90.0</phi-min-deg>
+     <phi-max-deg>90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/MFI-9B/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  1.60 </x-m>
+   <y-m>  0.95 </y-m>
+   <z-m> -1.50 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Right float 2</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/planing-drag-lbs[1]</property>
+       <value>1.0</value>
+      </greater-than>
+     </and>
+    </condition>
+    <shooter>
+     <phi-min-deg>-90.0</phi-min-deg>
+     <phi-max-deg>-90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/MFI-9B/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  1.60 </x-m>
+   <y-m>  0.95 </y-m>
+   <z-m> -1.50 </z-m>
+  </offsets>
+ </model>
+
+ <!-- LOD for the model as a whole =========================================-->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>15000</max-m>
+ </animation>
+
+ <nasal>
+  <load>
+##############################################################################
+# The on-load Nasal is not executed when this file is loaded as the user
+# aircraft.
+##############################################################################
+var rplayer = cmdarg();
+print("LOAD MFI-9B ", rplayer.getPath());
+
+# Set up property aliases for animations.
+
+# Set up livery support.
+var livery_update =
+  aircraft.livery_update.new("Aircraft/MFI-9/Models/Liveries", 10);
+
+##############################################################################
+  </load>
+  <unload>
+##############################################################################
+var rplayer = cmdarg();
+print("UNLOAD MFI-9B ", rplayer.getPath());
+# Stop the livery support.
+livery_update.stop();
+##############################################################################
+  </unload>
+ </nasal>
+
+
+</PropertyList>

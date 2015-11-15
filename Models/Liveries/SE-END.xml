@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+  MFI-9B aircraft for FlightGear.
+
+  Copyright (C) 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ <sim>
+  <model>
+   <livery>
+    <name type="string">SE-END</name>
+    <index type="int">1</index>
+    <texture n="0" type="string">Liveries/SE-END-exterior.png</texture>
+    <texture n="1" type="string">Interior/interior.png</texture>
+   </livery>
+   <floats type="double">1.0</floats>
+  </model>
+ </sim>
+</PropertyList>

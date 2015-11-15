@@ -1,0 +1,21 @@
+Anders Gidenstam  (anders(at)gidenstam.org)
+  - MFI-9B FlightGear configuration
+  - MFI-9B Flight Dynamics Model configuration
+  - MFI-9B 3d model
+  - MFI-9B DATCOM config
+
+Ron Jensen
+  - O-200 engine config for JSBSim
+  - Sounds/sound.xml (from the c150)
+
+The model borrows content from the following authors' contributions
+to FlightGear:
+
+David Megginson et al.
+  - Propeller 3d model. (From c172p)
+
+Dependencies (i.e. install these aircraft):
+
+Aircraft/ZLT-NT         (Models/Lights/{Green,Red,White}Light.xml)
+Aircraft/c172p          (most of the instruments)
+Aircraft/Short_Empire   (Instruments/{OilPressure,OilTemperatureGauge}/)

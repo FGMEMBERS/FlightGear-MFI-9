@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<!--
+  MFI-9B aircraft for FlightGear.
+
+  Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>MFI-9B aircraft.</description>
+  <author>Anders Gidenstam</author>
+  <aircraft-version>2015-11-08</aircraft-version>
+
+  <status type="string">alpha</status>
+  <rating>
+   <FDM type="int">1</FDM>
+   <systems type="int">1</systems>
+   <cockpit type="int">2</cockpit>
+   <model type="int">2</model>
+  </rating>
+
+  <flight-model>jsb</flight-model>
+  <aero>MFI-9B</aero>
+  <!-- The higher rate aides stability in the ground/hydrodynamic reactions. -->
+  <model-hz type="double">960.0</model-hz>
+
+  <!-- startup>
+   <splash-texture>Aircraft/MFI-9/splash.png</splash-texture>
+  </startup -->
+
+  <sound>
+   <audible type="bool">true</audible>
+   <path>Aircraft/MFI-9/Sounds/sound.xml</path>
+  </sound>
+
+  <model>
+   <path>Aircraft/MFI-9/Models/MFI-9B.xml</path>
+   <livery>
+    <file type="string"></file>
+   </livery>
+   <floats type="double">0.0</floats>
+  </model>
+
+  <!-- Aircraft specific help. -->
+  <help include="help.xml"/>
+
+  <systems>
+   <path>Aircraft/MFI-9/Systems/systems.xml</path>
+  </systems>
+  <instrumentation>
+   <path>Aircraft/MFI-9/Systems/instrumentation.xml</path>
+  </instrumentation>
+
+  <view n="0">
+   <internal type="bool">true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">-0.25</x-offset-m>
+    <y-offset-m type="double"> 0.55</y-offset-m>
+    <z-offset-m type="double"> 1.80</z-offset-m>
+    <pitch-offset-deg type="double">-15.0</pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="100">
+   <!-- Copilot's position. -->
+   <name>Copilot View</name>
+   <internal>true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <x-offset-m type="double"> 0.25</x-offset-m>
+    <y-offset-m type="double"> 0.55</y-offset-m>
+    <z-offset-m type="double"> 1.80</z-offset-m>
+    <pitch-offset-deg type="double">-15.0</pitch-offset-deg>
+    <default-field-of-view-deg type="double">65</default-field-of-view-deg>
+   </config>
+  </view>
+
+  <!-- Move the center of the external views. -->
+  <view n="1">
+   <config>
+    <target-z-offset-m type="double">2.0</target-z-offset-m>
+   </config>
+  </view>
+  <view n="2">
+   <config>
+    <target-z-offset-m type="double">2.0</target-z-offset-m>
+   </config>
+  </view>
+  <view n="3">
+   <config>
+    <target-z-offset-m type="double">2.0</target-z-offset-m>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+    <target-z-offset-m type="double">2.0</target-z-offset-m>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+    <target-z-offset-m type="double">2.0</target-z-offset-m>
+   </config>
+  </view>
+
+  <chase-distance-m type="double">-25.0</chase-distance-m>
+
+  <multiplay>
+   <generic>
+   </generic>
+  </multiplay>
+
+  <!-- checklists include="Checklists/checklists.xml"/ -->
+
+  <menubar>
+   <default>
+    <menu n="100">
+     <label>MFI-9</label>
+     <!-- item>
+      <label>About</label>
+      <binding>
+       <command>nasal</command>
+       <script>MFI9.about()</script>
+      </binding>
+     </item -->
+     <item>
+      <label>Select Livery</label>
+      <binding>
+       <command>nasal</command>
+       <script>aircraft.livery.dialog.toggle()</script>
+      </binding>
+     </item>
+    </menu>
+   </default>
+  </menubar>
+
+ </sim>
+ 
+ <!-- Set defaults for systems and instruments that need it. -->
+ <systems>
+  <refuel>
+   <serviceable type="bool">0</serviceable>
+  </refuel>
+  <electrical>
+  </electrical>
+ </systems>
+ <instrumentation>
+  <oil-pressure-gauge>
+   <serviceable type="bool">1</serviceable>
+  </oil-pressure-gauge>
+  <oil-temperature-gauge>
+   <serviceable type="bool">1</serviceable>
+  </oil-temperature-gauge>
+ </instrumentation>
+
+ <payload>
+  <weight>
+   <name type="string">Pilot (left)</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">300.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Pilot (right)</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">300.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Luggage</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">100.0</max-lb>
+  </weight>
+ </payload>
+
+ <!-- consumables include="Systems/consumables.xml"/ -->
+
+ <limits>
+  <vne type="double">165.0</vne>
+  <mass-and-balance>
+   <maximum-takeoff-mass-lbs type="double">1268</maximum-takeoff-mass-lbs>
+   <maximum-landing-mass-lbs type="double">1268</maximum-landing-mass-lbs>
+  </mass-and-balance>
+ </limits>
+
+ <nasal>
+  <limits>
+   <file>Aircraft/Generic/limits.nas</file>
+  </limits>
+  <!-- Dual control. -->
+  <!-- dual_control_tools>
+   <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+  </dual_control_tools -->
+  <KX165>
+   <file>Aircraft/Generic/DualControl/Instruments/KX165/kx165tso.nas</file>
+  </KX165>
+  <MFI9>
+   <script>
+     aircraft.livery.init("Aircraft/MFI-9/Models/Liveries");
+     print("Livery support ... initialized!");   
+   </script>
+  </MFI9>
+  <hydrodynamics>
+   <file>Systems/jsbsim-hydrodynamics.nas</file>
+  </hydrodynamics>
+ </nasal>
+
+ <input>
+  <!-- keyboard include="Systems/keys.xml"/ -->
+ </input>
+
+ <!--
+   Force the type and initial value of the aliased JSBSim control properties.
+   JSBSim does not write default values to properties that it finds already
+   exist even though they are of undefined type, as e.g. when created by
+   aliases. Setting the default values here allow them to be overriden from
+   the command line.
+ -->
+ <fdm>
+  <jsbsim>
+   <floats-enabled-norm alias="/sim/model/floats"/>
+  </jsbsim>
+ </fdm>
+
+</PropertyList>
